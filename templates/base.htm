@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <div style="margin-top: 50%;" class="ui container">
+        <h1 class="ui center algined header">To do app</h1>
+        <form class="ui form" action="/add" method="post">
+            <div class="field">
+                <label>Todo title</label>
+                <input type="text" name="title" placeholder="enter todo"><br>
+            </div>
+            <button class="ui blue button" type="submit">Add</button>
+        </form>
+
+        <hr>
+
+        {% for todo in todo_list%}
+        <div class="ui segment">
+            <P class="ui big header">{{todo.id}} | {{todo.title}}</P>
+            {% if todo.complete == False %}
+            <span class="ui gray label">Not complete</span>
+            {% else %}
+            <span class="ui gray label">Complete</span>
+            {% endif %}
+
+            <a  class="blue button" href="/update/{{ todo.id }}">Update</a>
+            <a class="blue button" href="/delete/{{ todo.id }}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
