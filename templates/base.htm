@@ -22,7 +22,7 @@
         {% for todo in todo_list%}
         <div class="ui segment">
             <P class="ui big header">{{todo.id}} | {{todo.title}}</P>
-            {% if todo.complete == False %}
+            {% if not todo.complete %}
             <span class="ui gray label">Not complete</span>
             {% else %}
             <span class="ui gray label">Complete</span>

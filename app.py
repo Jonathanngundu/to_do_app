@@ -38,7 +38,7 @@ def add():
 
 @app.get("/update/<int:todo_id>")
 def update(todo_id):
-    todo = db.session.query(Todo).filter(Todo.id == Todo.id).first()
+    todo = Todo.query.get(todo_id)
     todo.complete = not todo.complete
     db.session.commit()
     return redirect(url_for("home"))
